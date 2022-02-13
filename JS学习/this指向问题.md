@@ -15,4 +15,61 @@
 
 3. 箭头函数中的this，就是定义**该函数时所在的函数作用域指向的对象**，**箭头函数中this,首先到它的父作用域找，如果父作用域还是箭头函数，那么接着向上找，直到找到我们要的this指向。**
 
+   ~~~js
+   //这是父作用域，this指向window
+   let person1 = {
+       name:'lisi',
+       age:10,
+       //注意这里并没有this
+       say:() => {
+           console.log(this);//输出window
+       }
+   }
    
+   person1.say();
+   ~~~
+
+
+
+为什么会输出window，其实原因很简单，day方法中的this因为在箭头函数中，所以指向父作用域中，父作用域就是最外层作用域，父作用域中的this指向window，所以输出window。
+
+有的同学可能会想say方法中的父作用域怎么不是对象person1 = {} 中我标记‘//注意这里并没有this’的位置，因为这里是个对象，对象中有属性，方法，但并没有this。
+
+接下来我们把它改成定时器使用箭头函数的方式：
+
+~~~js
+let person1 = {
+    name:'lisi',
+    age:10,
+    say:function(){
+        //这里是外部作用域 ，this指向person1(因为person1调用的say）,即箭头函数中的this指向person1
+        setTimeout(() => {
+            console.log(this);  //this指向外部作用域中this
+        });
+    }
+}
+person1.say();  //输出person1对象
+
+~~~
+
+这个例子中，定时器箭头函数中的this指向外部作用域，即指向say方法中，say方法中this指向person1对象,所以输出person1对象。
+
+那么如果我把say方法也改成箭头函数：
+
+~~~js
+//这里是外部作用域 this指向window，即最终console中的this指向window
+let person1 = {
+    name:'lisi',
+    age:10,
+    say:()=>{
+        //这里是外部作用域,因为本身又是箭头函数，继续向上找
+        setTimeout(() => {
+            console.log(this);  //this指向外部作用域中this
+        });
+    }
+}
+person1.say();   //输出window
+~~~
+
+这个例子中[定时器箭头函数](https://www.zhihu.com/search?q=定时器箭头函数&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"article"%2C"sourceId"%3A"34368455"})中的this向上say方法中的this,但由于say方法中也是箭头函数，所以say方法中的this还要继续向上找，即找到了最外层，所以最后指向window。总结：**箭头函数中this,首先到它的父作用域找，如果父作用域还是箭头函数，那么接着向上找，直到找到我们要的this指向。**
+
