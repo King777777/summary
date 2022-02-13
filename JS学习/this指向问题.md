@@ -13,7 +13,7 @@
 
 2. 在普通函数中，谁调用我，this就指向谁
 
-3. 箭头函数中的this，就是定义**该函数时所在的函数作用域指向的对象**，**箭头函数中this,首先到它的父作用域找，如果父作用域还是箭头函数，那么接着向上找，直到找到我们要的this指向。**
+3. 箭头函数中的this，就是定义**该函数时所在的函数作用域指向的对象**，**箭头函数中this,首先到它的作用域找，如果作用域还是箭头函数，那么接着向上找，直到找到我们要的this指向。**
 
    ~~~js
    //这是父作用域，this指向window
@@ -71,5 +71,16 @@ let person1 = {
 person1.say();   //输出window
 ~~~
 
-这个例子中[定时器箭头函数](https://www.zhihu.com/search?q=定时器箭头函数&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"article"%2C"sourceId"%3A"34368455"})中的this向上say方法中的this,但由于say方法中也是箭头函数，所以say方法中的this还要继续向上找，即找到了最外层，所以最后指向window。总结：**箭头函数中this,首先到它的父作用域找，如果父作用域还是箭头函数，那么接着向上找，直到找到我们要的this指向。**
+这个例子中定时器箭头函数中的this向上say方法中的this,但由于say方法中也是箭头函数，所以say方法中的this还要继续向上找，即找到了最外层，所以最后指向window。总结：**箭头函数中this,首先到它的父作用域找，如果父作用域还是箭头函数，那么接着向上找，直到找到我们要的this指向。**
+
+```js
+let myObj = {
+    a: 1,
+    arrow() {
+        //这里是外部作用域，arrow函数的this，谁调用指向谁
+        setTimeout(()=>console.log(this), 0);
+    }
+}
+myObj.arrow.apply({name: 'wq'}); // this指向{name: 'wq'}这个对象
+```
 
