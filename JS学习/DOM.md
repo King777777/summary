@@ -45,7 +45,7 @@ JS操作首先要找到想操作的HTML元素，常用的方法就是下面四�
 
 如下，改变了img元素的src属性
 
-~~~js
+~~~html
 <!DOCTYPE html>
 <html>
 <body>
@@ -66,7 +66,7 @@ document.getElementById("image").src="landscape.jpg";
 
 下面这个例子改变了p元素的样式
 
-~~~js
+~~~html
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,7 +105,7 @@ HTML DOM允许在触发对应事件时执行相关代码
 
 下面使用了button的点击事件来修改标题的颜色
 
-~~~js
+~~~html
 <!DOCTYPE html>
 <html>
 <body>
@@ -165,3 +165,11 @@ addEventListener() 方法可以指定 "useCapture" 参数来设置传递类型�
 移除事件监听 *element*.removeEventListener("mousemove", myFunction);
 
 具体可参考MDN上的addEventListener
+
+## HTML全局属性
+
+![image-20220223232539247](https://gitee.com/lwq1229/picture/raw/master/img/image-20220223232539247.png)
+
+每个html 标签都有自己独特的属性如a标签有href，input标签有value， img标签有src等
+
+然后html又有一个全局属性，大部分标签都有的
