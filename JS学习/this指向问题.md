@@ -21,7 +21,8 @@
    let person1 = {
        name:'lisi',
        age:10,
-       //注意这里并没有this
+       //注意这里并没有this， 对象没有作用域，
+    // JavaScript 作用域 作用域是可访问变量的集合。 JavaScript 作用域 在JavaScript 中, 对象和函数同样也是变量。 在JavaScript 中, 作用域为可访问变量,对象,函数的集合。
        say:() => {
            console.log(this);//输出window
        }
