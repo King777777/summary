@@ -4,7 +4,7 @@
 
 先来看下最后的结果长啥样
 
-![image-20220222231958254](https://gitee.com/lwq1229/picture/raw/master/img/image-20220222231958254.png)
+![image-20220222231958254](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220222231958254.png)
 
 ## 组合
 
@@ -240,7 +240,7 @@ function calculateWinner(squares) {
 
 初步效果如下
 
-![image-20220223111413314](https://gitee.com/lwq1229/picture/raw/master/img/image-20220223111413314.png)
+![image-20220223111413314](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220223111413314.png)
 
 ## 抽出历史记录
 
@@ -387,7 +387,7 @@ export default function Square(props) {
 
 先来看下最后的结果长啥样
 
-![image-20220222231958254](https://gitee.com/lwq1229/picture/raw/master/img/image-20220222231958254.png)
+![image-20220222231958254](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220222231958254.png)
 
 ## 组合
 
@@ -623,7 +623,7 @@ function calculateWinner(squares) {
 
 初步效果如下
 
-![image-20220223111413314](https://gitee.com/lwq1229/picture/raw/master/img/image-20220223111413314.png)
+![image-20220223111413314](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220223111413314.png)
 
 ## 抽出历史记录
 

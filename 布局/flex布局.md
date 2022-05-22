@@ -8,7 +8,7 @@ flex弹性布局
 
 行内元素也可以使用flex布局
 
-![image-20220220233709914](https://gitee.com/lwq1229/picture/raw/master/img/image-20220220233709914.png)
+![image-20220220233709914](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220220233709914.png)
 
 ~~~css
 .box{
@@ -18,7 +18,7 @@ flex弹性布局
 
 ## 基本概念
 
-![image-20210722181457064](https://gitee.com/lwq1229/picture/raw/master/img/image-20210722181457064.png)
+![image-20210722181457064](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20210722181457064.png)
 
 
 
@@ -38,7 +38,7 @@ flex弹性布局
 }
 ```
 
-![image-20210722181739042](https://gitee.com/lwq1229/picture/raw/master/img/image-20210722181739042.png)
+![image-20210722181739042](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20210722181739042.png)
 
 它可能有4个值。
 
@@ -49,7 +49,7 @@ flex弹性布局
 
 #### flex-wrap换行
 
-![image-20210722181933978](https://gitee.com/lwq1229/picture/raw/master/img/image-20210722181933978.png)
+![image-20210722181933978](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20210722181933978.png)
 
 它可能取三个值。
 
@@ -95,7 +95,7 @@ justify-content定义了在主轴上的对其方向
 }
 ```
 
-![image-20210722183004762](https://gitee.com/lwq1229/picture/raw/master/img/image-20210722183004762.png)
+![image-20210722183004762](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20210722183004762.png)
 
 可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。
 
@@ -119,7 +119,7 @@ justify-content定义了在主轴上的对其方向
 > }
 > ```
 
-![image-20210722222356479](https://gitee.com/lwq1229/picture/raw/master/img/image-20210722222356479.png)
+![image-20210722222356479](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20210722222356479.png)
 
 该属性可能取6个值。
 
@@ -151,7 +151,7 @@ justify-content定义了在主轴上的对其方向
 }
 ```
 
-![image-20210722222737936](https://gitee.com/lwq1229/picture/raw/master/img/image-20210722222737936.png)
+![image-20210722222737936](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20210722222737936.png)
 
 #### flex-grow
 
@@ -163,7 +163,7 @@ justify-content定义了在主轴上的对其方向
 }
 ```
 
-![image-20210722222840298](https://gitee.com/lwq1229/picture/raw/master/img/image-20210722222840298.png)
+![image-20210722222840298](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20210722222840298.png)
 
 如果所有项目的`flex-grow`属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的`flex-grow`属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
 
@@ -177,7 +177,7 @@ justify-content定义了在主轴上的对其方向
 }
 ```
 
-![image-20210722223114219](https://gitee.com/lwq1229/picture/raw/master/img/image-20210722223114219.png)
+![image-20210722223114219](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20210722223114219.png)
 
 如果所有项目的`flex-shrink`属性都为1，当空间不足时，都将等比例缩小。如果一个项目的`flex-shrink`属性为0，其他项目都为1，则空间不足时，前者不缩小。
 
@@ -215,7 +215,7 @@ justify-content定义了在主轴上的对其方向
 > }
 > ```
 
-![img](https://gitee.com/lwq1229/picture/raw/master/img/bg2015071016.png)
+![img](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/bg2015071016.png)
 
 该属性可能取6个值，除了auto，其他都与align-items属性完全一致。
 

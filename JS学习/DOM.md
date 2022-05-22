@@ -4,7 +4,7 @@
 
 当网页被加载时，浏览器会创建页面的文档对象模型，，HTML DOM模型被构造为对象的树
 
-![image-20220223213328340](https://gitee.com/lwq1229/picture/raw/master/img/image-20220223213328340.png)
+![image-20220223213328340](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220223213328340.png)
 
 通过这个可编程的对象模型，JS拥有了以下能力
 
@@ -25,9 +25,9 @@ JS操作首先要找到想操作的HTML元素，常用的方法就是下面四�
 - **document.querySelector("#id")**, 通过**选择器**，**返回类型取决于标签类型**，只能返回一个，如果需**要返回所有请用querySelectorAll**
 - **document.getElementsByClassName("myClass")**, 通过类名
 
-![image-20220223215255312](https://gitee.com/lwq1229/picture/raw/master/img/image-20220223215255312.png)
+![image-20220223215255312](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220223215255312.png)
 
-![image-20220223215546197](https://gitee.com/lwq1229/picture/raw/master/img/image-20220223215546197.png)
+![image-20220223215546197](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220223215546197.png)
 
 ## 改变HTML内容
 
@@ -168,7 +168,7 @@ addEventListener() 方法可以指定 "useCapture" 参数来设置传递类型�
 
 ## HTML全局属性
 
-![image-20220223232539247](https://gitee.com/lwq1229/picture/raw/master/img/image-20220223232539247.png)
+![image-20220223232539247](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220223232539247.png)
 
 每个html 标签都有自己独特的属性如a标签有href，input标签有value， img标签有src等
 

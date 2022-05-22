@@ -237,17 +237,17 @@ class CustomTextInput extends React.Component {
 
 初始
 
-![image-20220224140906784](https://gitee.com/lwq1229/picture/raw/master/img/image-20220224140906784.png)
+![image-20220224140906784](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220224140906784.png)
 
 点击button后，可见我们成功使用ref来操作了DOM元素，使其调用了focus()方法聚焦
 
-![image-20220224140931033](https://gitee.com/lwq1229/picture/raw/master/img/image-20220224140931033.png)
+![image-20220224140931033](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220224140931033.png)
 
 React 会在组件挂载时给 `current` 属性传入 DOM 元素，并在组件卸载时传入 `null` 值。`ref` 会在 `componentDidMount` 或 `componentDidUpdate` 生命周期钩子触发前更新。
 
 附一张v16的生命周期图
 
-#### ![image-20220224142034368](https://gitee.com/lwq1229/picture/raw/master/img/image-20220224142034368.png)
+#### ![image-20220224142034368](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220224142034368.png)
 
 #### 为class组件添加ref
 

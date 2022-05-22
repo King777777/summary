@@ -263,15 +263,15 @@ function withMouse(Component) {
 
 在CodePen上验证下，下面WelcomeDialog的children prop是一个函数，它接受一个值x，并返回一个React元素，内容是x+1，
 
-![image-20220225234922193](https://gitee.com/lwq1229/picture/raw/master/img/image-20220225234922193.png)
+![image-20220225234922193](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220225234922193.png)
 
 然后我们在FancyBorder组件中用 typeof判断下 props.children的类型，并查看输出结果
 
-![image-20220225234950100](https://gitee.com/lwq1229/picture/raw/master/img/image-20220225234950100.png)
+![image-20220225234950100](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220225234950100.png)
 
-![image-20220225235001301](https://gitee.com/lwq1229/picture/raw/master/img/image-20220225235001301.png)
+![image-20220225235001301](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220225235001301.png)
 
-![image-20220225235235690](https://gitee.com/lwq1229/picture/raw/master/img/image-20220225235235690.png)
+![image-20220225235235690](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220225235235690.png)
 
 结果和预期的一样，children prop也可以当作render prop使用，它也可以作为一个函数(之前都是当元素用)
 
