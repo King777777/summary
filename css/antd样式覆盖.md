@@ -86,4 +86,69 @@
 效果如下，可以看到Select高度和滚动都有了作用
 
 ![image-20220501112000527](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20220501112000527.png)
+# :only-child
+在工程中
+
+CSS[伪类](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)`:only-child` 匹配没有任何兄弟元素的元素。等效的选择器还可以写成 `:first-child:last-child`或者`:nth-child(1):nth-last-child(1)`,当然，前者的权重会低一点。
+
+但是我们可以**使用后者来确定一个元素**，比如我只需要正数第一个，倒数第二个
+
+~~~html
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+li:nth-child(1):nth-last-child(2)
+{
+background:#ff0000;
+}
+</style>
+</head>
+
+<body>
+
+<ul>
+<li>第一个</li>
+<li>第二个</li>
+</ul>
+
+
+</body>
+</html>
+
+~~~
+
+需求，在select 多选模式下，当仅剩一个时，不可删除
+
+![image-20220622104815528](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220622104815528.png)
+
+可以发现即使只选择一个，在ul标签里还是有两个li，而第一个使我们要修改，所以我们需要用`nth-child(1):nth-last-child(2)`来确定这个目标
+
+给Select加一个className为test
+
+~~~jsx
+<Select
+    mode="multiple"
+    style={{ width: '100%' }}
+    placeholder="Please select"
+    defaultValue={['a10', 'c12']}
+    onChange={handleChange}
+    className="test"
+  >
+~~~
+
+less文件中新增test类，覆盖它原有的样式用:global包起来
+
+~~~less
+.test{
+    :global{
+        li:nth-child(1):nth-last-child(2){
+            .ant-select-selection__choice__remove{
+                display: none
+            }
+        }
+    }
+}
+~~~
+
 
