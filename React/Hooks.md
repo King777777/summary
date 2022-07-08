@@ -1,0 +1,171 @@
+# Hooks
+
+hooks的一个有点，可以在组件之间复用状态逻辑，刚开始还有点不太理解，看了一个简单例子后突然有所顿悟。
+
+![image-20220704162526112](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220704162526112.png)
+
+像上面两个组件，他们都有同一个状态count，同样的逻辑加减，类似这种状态逻辑我们可以用hooks来完成复用。
+
+## 表格增删的hook
+
+这个例子让我想起了项目中的表格，经常需要加一行或者删除一行，以前都是照着cv过来，学习hooks之后，有了优雅快速的解决方法。
+
+~~~jsx
+import React, {useState} from 'react';
+
+const useRowChangeNum = (initialValue) => {
+    //数据状态
+  const [dataSource, setDataSource] = useState(initialValue);
+
+    //增删方法
+  const handleIncrement = () => {
+    setDataSource(dataSource => [...dataSource, {}]);
+  }
+  const handleDecrement = (delIndex) => {
+    const tempDataSource = [...dataSource];
+    tempDataSource.splice(delIndex, 1);
+    setDataSource([...tempDataSource]);
+  }
+   //最后返回数据以及它的操作方法
+  return {dataSource, setDataSource, handleIncrement, handleDecrement};
+}
+export default useRowChangeNum;
+
+~~~
+
+在组件中的使用
+
+```jsx
+import React, {useEffect, useState} from 'react';
+import {Button, Table} from 'antd';
+import useRowChangeNum from "./useRowChangeNum";
+
+
+const testDataSource = [
+  {
+    name: 'lwq',
+    age: 18,
+    gender: 'male'
+  },
+  {
+    name: 'lwq',
+    age: 19,
+    gender: 'male'
+  },
+  {
+    name: 'lwq',
+    age: 20,
+    gender: 'male'
+  }
+];
+
+const TableChangRowNum = props => {
+  const {dataSource, setDataSource, handleIncrement, handleDecrement} = useRowChangeNum([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDataSource(testDataSource);
+      setLoading(false);
+    }, 1000);
+  }, [])
+
+  const columns = [
+    {
+      title: '姓名',
+      dataIndex: 'name',
+      width: 200,
+    },
+    {
+      title: '年龄',
+      dataIndex: 'age',
+      width: 200,
+    },
+    {
+      title: '性别',
+      dataIndex: 'gender',
+      width: 200,
+    },
+    {
+      title: '操作',
+      dataIndex: 'ops',
+      width: 200,
+      render: (_, __, index) =>{
+        return (
+          <Button onClick={()=>{
+            handleDecrement(index);
+          }}>X</Button>
+        )
+      }
+    }
+  ]
+
+
+  return (
+      <>
+      <Table
+        columns={columns}
+        loading={loading}
+        dataSource={dataSource}
+        pagination={false}
+      />
+      <Button type="dashed" style={{width: "100%"}} onClick={handleIncrement}>+</Button>
+      </>
+  )
+}
+
+export default TableChangRowNum;
+```
+
+![image-20220704163908025](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220704163908025.png)
+
+比之前复制一堆重复的逻辑好多了，这就是状态逻辑复用，hooks真的优雅
+
+## useRequest
+
+了解hooks之后，立马就能够想到在请求中使用hook来减少比如在component常见的请求，loading状态，数据等等的重复状态逻辑代码。
+
+随手写了个非常简单的
+
+~~~jsx
+import React, {useState, useEffect} from 'react';
+
+const useRq = (fn) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    fn().then(res => {setData(res);setLoading(false)});
+  }, [])
+
+ return {data, loading}
+
+}
+export default useRq;
+
+~~~
+
+使用
+
+~~~jsx
+import Mock from 'mockjs';
+import React from 'react';
+import useRq from "./uesRq";
+function getUsername() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(Mock.mock('@name'));
+    }, 1000);
+  });
+}
+export default () => {
+  const { data, loading } = useRq(getUsername);
+  if (loading) {
+    return <div>loading...</div>;
+  }
+  return <div>Username: {data}</div>;
+};
+~~~
+
+当然阿里的ahoos的useRequest无疑是非常强大的，覆盖99%的功能，并且经过实际的检验，推荐使用。
