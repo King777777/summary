@@ -2,7 +2,7 @@
 
 hooks的一个有点，可以在组件之间复用状态逻辑，刚开始还有点不太理解，看了一个简单例子后突然有所顿悟。
 
-![image-20220704162526112](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220704162526112.png)
+![image-20220704162526112](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220704162526112.png)
 
 像上面两个组件，他们都有同一个状态count，同样的逻辑加减，类似这种状态逻辑我们可以用hooks来完成复用。
 
@@ -117,7 +117,7 @@ const TableChangRowNum = props => {
 export default TableChangRowNum;
 ```
 
-![image-20220704163908025](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220704163908025.png)
+![image-20220704163908025](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220704163908025.png)
 
 比之前复制一堆重复的逻辑好多了，这就是状态逻辑复用，hooks真的优雅
 

@@ -24,7 +24,7 @@
 
 DOM将HTML表示为标签的树形结构，看起来如下所示
 
-![image-20220615155235396](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220615155235396.png)
+![image-20220615155235396](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220615155235396.png)
 
 **标签被称为元素节点**，并形成了树形结构，html是根节点，head和body是其子项
 
@@ -45,7 +45,7 @@ DOM将HTML表示为标签的树形结构，看起来如下所示
 <table id="table"><tr><td>1</td></tr></table>
 ```
 
-![image-20220615160420921](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220615160420921.png)
+![image-20220615160420921](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220615160420921.png)
 
 ## 其他节点类型
 
@@ -67,7 +67,7 @@ DOM将HTML表示为标签的树形结构，看起来如下所示
 </html>
 ~~~
 
-![image-20220615161129960](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220615161129960.png)
+![image-20220615161129960](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220615161129960.png)
 
 在这里我们可以看到一个新的树节点类型 — *comment node*，被标记为 `#comment`，它在两个文本节点之间。
 
@@ -94,7 +94,7 @@ DOM允许我们对元素和它们中的任何内容操作，首先需要获取�
 
 这里是一张描述对象间链接的图片，通过这些链接我们可以在 DOM 节点之间移动。
 
-![image-20220615161632269](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220615161632269.png)
+![image-20220615161632269](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220615161632269.png)
 
 ## documentElement和body
 
@@ -192,7 +192,7 @@ elem.childNodes[elem.childNodes.length - 1] === elem.lastChild
 
 所以，让我们看看更多只考虑 **元素节点** 的导航链接（navigation link）：
 
-![image-20220615162636919](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220615162636919.png)
+![image-20220615162636919](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220615162636919.png)
 
 **为什么是 `parentElement`? 父节点可以不是一个元素吗？**
 
@@ -395,7 +395,7 @@ nodeValue/data给文本节点用的，data更短，更常用
 
 层次结构的根节点是EventTarget，Node继承自它，其他DOM节点继承自Node
 
-![image-20220617112038316](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220617112038316.png)
+![image-20220617112038316](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220617112038316.png)
 
 - [EventTarget](https://dom.spec.whatwg.org/#eventtarget) — 是根的“抽象（abstract）”类。该类的对象从未被创建。它作为一个基础，以便让所有 DOM 节点都支持所谓的“事件（event）”，我们会在之后学习它。
 
@@ -601,7 +601,7 @@ textContent提供了对元素内的 **文本** 的访问权限，仅文本
 
 这个元素看起来就像这样：
 
-![image-20220617143514143](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220617143514143.png)
+![image-20220617143514143](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220617143514143.png)
 
 **注意滚动条**
 
@@ -611,7 +611,7 @@ textContent提供了对元素内的 **文本** 的访问权限，仅文本
 
 ## 几何
 
-![image-20220617144409557](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220617144409557.png)
+![image-20220617144409557](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220617144409557.png)
 
 ## 总结
 
@@ -631,7 +631,7 @@ textContent提供了对元素内的 **文本** 的访问权限，仅文本
 
 ## 窗口的宽高
 
-![image-20220617145804009](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220617145804009.png)
+![image-20220617145804009](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220617145804009.png)
 
 ## 文档的宽高
 
@@ -703,7 +703,7 @@ alert('当前已从左侧滚动：' + window.pageXOffset);
 
 **相对于文档** — 与文档根（document root）中的 `position:absolute` 类似，从文档的顶部/左侧边缘计算得出
 
-![image-20220617144839223](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220617144839223.png)
+![image-20220617144839223](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220617144839223.png)
 
 当文档滚动了：
 
@@ -724,7 +724,7 @@ alert('当前已从左侧滚动：' + window.pageXOffset);
 - `top/bottom` — 顶部/底部矩形边缘的 Y 坐标，
 - `left/right` — 左/右矩形边缘的 X 坐标。
 
-![image-20220617145044034](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220617145044034.png)
+![image-20220617145044034](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220617145044034.png)
 
 ## 文档坐标PageX/Y
 

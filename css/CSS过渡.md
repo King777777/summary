@@ -107,7 +107,7 @@ div {
 
 
 
-![css-transition](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgcss-transition.gif)
+![css-transition](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgcss-transition.gif)
 
 ## 过渡是否完成
 
@@ -164,4 +164,4 @@ document.addEventListener('click', function(ev){
 </html>
 ~~~
 
-![GIF 2022-5-29 16-51-33](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgGIF%202022-5-29%2016-51-33.gif)
+![GIF 2022-5-29 16-51-33](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgGIF%202022-5-29%2016-51-33.gif)

@@ -120,7 +120,7 @@ background:#ff0000;
 
 需求，在select 多选模式下，当仅剩一个时，不可删除
 
-![image-20220622104815528](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220622104815528.png)
+![image-20220622104815528](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220622104815528.png)
 
 可以发现即使只选择一个，在ul标签里还是有两个li，而第一个使我们要修改，所以我们需要用`nth-child(1):nth-last-child(2)`来确定这个目标
 

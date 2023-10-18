@@ -2,7 +2,7 @@
 
 先看下官网的描述
 
-![image-20220616103926599](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220616103926599.png)
+![image-20220616103926599](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220616103926599.png)
 
 为什么说是 **可能** 呢，因为在不同场景下setState有时表现为同步有时表现为“异步”(带引号，跟promise，setTimeout的异步有区别，表现的像异步)。
 
@@ -44,7 +44,7 @@ ReactDOM.render(
           
 ~~~
 
-![image-20220616110145229](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220616110145229.png)
+![image-20220616110145229](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220616110145229.png)
 
 在生命周期函数中，我们更新了count值为1，然后打印this.state.count却输出0，可见在生命周期函数中使用setState表现为异步更新
 
@@ -80,7 +80,7 @@ ReactDOM.render(
 );
 ~~~
 
-![image-20220616110654556](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220616110654556.png)
+![image-20220616110654556](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220616110654556.png)
 
 点击change，console打印出0，可见react的合成事件中setState也表现为异步
 
@@ -118,7 +118,7 @@ ReactDOM.render(
 );
 ~~~
 
-![image-20220616110954931](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220616110954931.png)
+![image-20220616110954931](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220616110954931.png)
 
 我们在setTimeout中更新count的值，然后立刻输出，可见count输出为1，count的更新表现为同步
 
@@ -157,7 +157,7 @@ ReactDOM.render(
 );
 ~~~
 
-![image-20220616112258773](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220616112258773.png)
+![image-20220616112258773](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220616112258773.png)
 
 可见，在原生事件中，更新state表现为同步更新
 

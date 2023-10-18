@@ -20,7 +20,7 @@
 
 基本的要素如下图所示
 
-![image-20220626172509838](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220626172509838.png)
+![image-20220626172509838](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220626172509838.png)
 
 ### meta标签
 
@@ -156,7 +156,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element
 
 详见https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/table
 
-![image-20220705205703535](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220705205703535.png)
+![image-20220705205703535](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220705205703535.png)
 
 
 
@@ -201,7 +201,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element
 </table>
 ~~~
 
-![image-20220705221808106](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220705221808106.png)
+![image-20220705221808106](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220705221808106.png)
 
 #### table
 
@@ -223,11 +223,11 @@ https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element
 
 - border-collapse： collapse；合并边框
 
-![image-20220705220516202](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220705220516202.png)
+![image-20220705220516202](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220705220516202.png)
 
 - border-collapse：separate；独立边框，此为默认值
 
-![image-20220705220528164](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/imgimage-20220705220528164.png)
+![image-20220705220528164](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220705220528164.png)
 
 合并（*collapsed* ）模式下，表格中相邻单元格共享边框。在这种模式下，CSS 属性[`border-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-style) 的值 inset 表现为槽，值 outset 表现为脊。
 
