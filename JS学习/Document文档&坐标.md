@@ -24,7 +24,7 @@
 
 DOM将HTML表示为标签的树形结构，看起来如下所示
 
-![image-20220615155235396](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220615155235396.png)
+![image-20220615155235396](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220615155235396.png)
 
 **标签被称为元素节点**，并形成了树形结构，html是根节点，head和body是其子项
 
@@ -45,7 +45,7 @@ DOM将HTML表示为标签的树形结构，看起来如下所示
 <table id="table"><tr><td>1</td></tr></table>
 ```
 
-![image-20220615160420921](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/img/imgimage-20220615160420921.png)
+![image-20220615160420921](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/imgimage-20220615160420921.png)
 
 ## 其他节点类型
 
