@@ -162,3 +162,61 @@ const queryString = qs.stringify({name: 'zhangsan', age: 18})// 输出"name=zhan
 
 ### screen对象
 
+用的很少，主要是关于屏幕的信息
+
+### history对象
+
+history 对象表示当前窗口首次使用以来用户的导航历史记录。因为 history 是 window 的属性，
+
+所以每个 window 都有自己的 history 对象。
+
+#### 导航
+
+history.go()方法实现页面的前进后退，负数代表后退如history.go(-1)表示后退一页；history.go(1)代表前进一页
+
+此外，history.back()也代表后退一页，history.forward()代表前进一页
+
+#### 历史状态管理
+
+**在SPA应用中，我们改变了页面的URL而不触发刷新用的就是history.pushState();**
+
+因为 pushState()会创建新的历史记录**，所以也会相应地启用“后退”按钮。此时单击“后退”**
+
+**按钮，就会触发 window 对象上的 popstate 事件**。popstate 事件的事件对象有一个 state 属性，其
+
+中包含通过 pushState()第一个参数传入的 state 对象：
+
+~~~js
+window.addEventListener("popstate", (event) => { 
+ let state = event.state; 
+ if (state) { // 第一个页面加载时状态是 null 
+ 	processState(state); 
+ } 
+});
+~~~
+
+
+
+history.state返回页面的state对象
+
+在 [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML) 文档中，**`history.pushState()`** 方法向浏览器的会话历史栈增加了一个条目。
+
+该方法是[异步](https://developer.mozilla.org/zh-CN/docs/Glossary/Asynchronous)的。为 [`popstate`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/popstate_event) 事件增加监听器，以确定导航何时完成。`state` 参数将在其中可用
+
+~~~js
+// 第一个state是个对象，第二个是没用的一个变量设为空字符串即可，第三个就是url（绝对(同源)，相对都可以）
+pushState(state, unused)
+pushState(state, unused, url)
+~~~
+
+也可以使用 **replaceState()**并传入与pushState()同样的前两个参数来更新状态。**此方法更新状态不会创建新历史记录，只会覆盖当前状态**：
+
+**react-router库就是基于此来实现的**
+
+> 要确保通过 pushState()创建的每个“假”URL 背后
+>
+> 都对应着服务器上一个真实的物理 URL。否则，单击“刷新”按钮会导致 404 错误。所有
+>
+> 单页应用程序（SPA，Single Page Application）框架都必须通过服务器或客户端的某些配
+>
+> 置解决这个问题。
