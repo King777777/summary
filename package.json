@@ -1,0 +1,22 @@
+{
+  "name": "summaay",
+  "version": "1.0.0",
+  "description": "learning",
+  "main": "8000",
+  "scripts": {
+    "test": "''"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/King777777/summary.git"
+  },
+  "keywords": [
+    "前端"
+  ],
+  "author": "刘文强",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/King777777/summary/issues"
+  },
+  "homepage": "https://github.com/King777777/summary#readme"
+}

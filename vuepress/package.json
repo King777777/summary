@@ -1,0 +1,21 @@
+{
+  "name": "summary",
+  "version": "0.0.1",
+  "description": "test",
+  "main": "index.js",
+  "authors": {
+    "name": "lwq",
+    "email": ""
+  },
+  "repository": "https://github.com/King777777/summary.git/summary",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.3.1",
+    "@vuepress/plugin-back-to-top": "^1.3.1",
+    "@vuepress/plugin-medium-zoom": "^1.3.1"
+  }
+}
