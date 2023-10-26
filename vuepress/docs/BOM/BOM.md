@@ -1,4 +1,4 @@
-BOM
+ BOM
 
 ## window对象
 
@@ -12,7 +12,7 @@ ECMAScript 中的 Global 对象，另一个就是浏览器窗口的 JavaScript �
 
 window.parent, window.top, window.self的定义以及关系
 
-**这里的多个窗口是指嵌套窗口<iframe>**
+**这里的多个窗口是指嵌套窗口iframe**
 
 - **top对象始终指向最外层窗口，及浏览器窗口本身**
 - **parent始终指向当前窗口的父级窗口**，如果当前窗口就是最外层窗口，则parent === top（均为window）

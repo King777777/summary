@@ -35,7 +35,7 @@ DOM将HTML表示为标签的树形结构，看起来如下所示
 - 换行符：`↵`（在 JavaScript 中为 `\n`）
 - 空格：`␣`
 
-## **表格永远有<tbody>**
+## **表格永远有tbody**
 
 表格是一个有趣的“特殊的例子”。按照 DOM 规范，它们必须具有 `<tbody>` 标签，但 HTML 文本可能会忽略它。然后浏览器在创建 DOM 时，自动地创建了 `<tbody>`。
 
@@ -212,8 +212,7 @@ alert( document.documentElement.parentElement ); // null
 方便起见，某些类型的 DOM 元素可能会提供特定于其类型的其他属性。
 
 表格（Table）是一个很好的例子，它代表了一个特别重要的情况：
-
-<table> 元素支持 (除了上面给出的，之外) 以下这些属性:
+元素支持 (除了上面给出的，之外) 以下这些属性:
 
 - `table.rows` — `<tr>` 元素的集合。
 - `table.caption/tHead/tFoot` — 引用元素 `<caption>`，`<thead>`，`<tfoot>`。
@@ -416,7 +415,7 @@ nodeValue/data给文本节点用的，data更短，更常用
 
 因此，**给定节点的全部属性和方法都是继承的结果**
 
-例如，考虑下<input>元素的DOM对象， 它属于HTMLInputElement类
+例如，考虑下input元素的DOM对象， 它属于HTMLInputElement类
 
 它获取属性和方法，并将其作为下列类的叠加
 

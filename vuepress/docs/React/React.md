@@ -51,7 +51,7 @@ ReactDOM.render(element, document.getElementById("root"));
 
 1.定义组件最简单的方法就是编写js函数
 
-~~~JavaScript
+~~~js
 function Welcome(props){
     ...
     return <h1> hello , {props.name}</h1>;
