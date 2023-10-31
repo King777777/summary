@@ -1,3 +1,3 @@
 #!/bin/bash
-git push origin master;
-git push giteeOrigin master;
+git push origin docs;
+git push giteeOrigin docs;
