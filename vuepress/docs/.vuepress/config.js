@@ -188,8 +188,18 @@ module.exports = {
             { title: '阅React进阶之路总结', path: '/日常总结/阅React进阶之路总结' },
             { title: '陷入的一个思维定势', path: '/日常总结/陷入的一个思维定势' },
             { title: '杂项', path: '/日常总结/杂项' },
+
+          ]
+        },
+        {
+          title: '小坑总结',
+          path: './一些小坑/双滚动条',
+          collapsable: true,
+          children: [
+            { title: '一些小坑', path: '/一些小坑/双滚动条' },
           ]
         }
+
       ]
   },
 
