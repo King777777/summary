@@ -445,3 +445,262 @@ flex-basis: 0% /* 其实只要是一个带单位的长度就行了，因为如�
 }
 ~~~
 
+### sticky foot
+
+看图说话
+
+![image-20231101161857184](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231101161857184.png)
+
+页脚（Footer）的位置会随着页头（Header）和主内容（Content）高度而变化，但当页头和主内容内容较小，其高度总和小于浏览器视窗高度时，页脚要始终位于浏览器视窗底部。
+
+这其实就时我们两栏布局的右半部分的一种变体
+
+![image-20231101162058590](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231101162058590.png)
+
+对于 Sticky Footer 的布局，使用 Flexbox 再容易不过了，只需要保持主内容容器（它也是一个 Flex 项目）能随着它的父容器（Flex 容器）的剩余空间扩展。简单地说，给主内容设置一个 `flex-grow` 值为 `1` 即可。具体代码如下：
+
+~~~html
+<body>
+    <header>
+    </header>
+    <main>
+    </main>
+    <footer>
+    </footer>
+</body>
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
+~~~
+
+**需要注意的是，这里我们设置body的高度min-height：100vh而不是height：100vh，这两者的相同点就是内容区域的高度大于body时，body这一层都可以滚动y轴，不同点就是前者在main元素内设置的overflow-y不会生效（也就是不能在内容区域中滚动了），而后者可以在main元素内设overflow-y属性（内容区域可以滚动）**，前者适合手机，后者适合pc
+
+原因是，设置min-height：100vh，如果容器高度大于100vh，则容器高度取较大值，内容区域就满足高度不会出现滚动，而设置容器高度100vh，如果内容区域可以滚动就不会扩大高度，内容区域不可以滚动则会撑开容器，也会导致外围出现滚动
+
+1. body设置min-height：100vh或height:100vh，外围body都可以滚动
+
+   ![image-20231101170914930](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231101170914930.png)
+
+2. height：100vh，content设置overflow-y：auto，内容区域可以滚动，body高度没有超出视口
+
+![image-20231101171155311](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231101171155311.png)
+
+### 百分百无滚动
+
+其实和上面这个差不多，就是去掉页脚，然后在内容区域滚动
+
+![image-20231102110934516](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231102110934516.png)
+
+~~~html
+<!-- 整个 Modal 高度是 100vh -->
+<modal>
+    <modal-header>
+        <!-- 固定高度 -->
+    </modal-header>
+    <modal-content>
+        <!-- 滚动容器：flex: 1 -->
+    </modal-content>
+</modal>
+
+~~~
+
+很经典的一个flex布局
+
+~~~CSS
+
+modal {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+modal-header {
+    height: 120px; /* 一个固定高度值 */
+}
+
+modal-content {
+    flex: 1 1 0%;     /* 或 flex: 1*/
+    overflow-y: auto; /* 内容超过容器高度时出现滚动条 */
+}
+
+~~~
+
+看上去似乎没有问题，但实际上我们在 iOS 系统上触发了一个 Flexbox 的 Bug，就是在**滚动容器上显示设置** **`overflow-y:scroll`** **，滚动依旧失效** 。造成这个 Bug 是因为我们上面的 CSS 代码触发了 Flex 项目的边缘情况。如果要避免这个 Bug 的出现，需要对结构做出一定的调整：
+
+~~~HTML
+
+<div class="main-container"> <!-- flex-direction: column -->
+    <div class="fixed-container">Fixed Container</div><!-- eg. height: 100px -->
+    <div class="content-wrapper"><!-- min-height: 0, 这个很重要 -->
+        <div class="content"><!-- 滚动容器，overflow-y: auto & flex: 1 -->
+            内容
+        </div>
+    </div>
+</div>
+
+~~~
+
+对应css
+
+~~~css
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.fixed-container {
+    height: 100px; /* 固定容器的高度值，任何一个你想的固定值 */
+}
+
+.content-wrapper {
+    flex: 1;       /* 可以是 flex: 1 1 0% */
+    min-height: 0; /* 这个很重要 */
+    display: flex;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto; /* 内容超出滚动容器高度时，会出现滚动条 */
+}
+
+~~~
+
+其实就是在原先的内容区域加一个wrapper，并设置其min-height：0
+
+> 感觉没啥必要，第一种感觉就满足了
+
+### 12列网格布局
+
+使用flex实现的12列网格布局
+
+![image-20231102140701512](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231102140701512.png)
+
+~~~html
+<!-- 12列：flex 容器中包含 12 个 flex 项目 -->
+<flex-container>
+    <flex-item> 1 of 12</flex-item>
+    <!-- 中间省略 n个 flex-item -->
+    <flex-item> 1 of 12</flex-item>
+</flex-container>
+
+~~~
+
+css也很简单
+
+~~~css
+.flex-container{
+  display: flex;
+  gap: 1rem;
+}
+.flex-item{
+  flex: 1 1 0%;
+  min-width: 0; /* 确保一定等分*/
+}
+
+~~~
+
+当然，你也可以根据实际需要，给 Flex 项目指定明确的值，即给 Flex 项目的 `flex-basis` 初始化一个值，同时 `flex-grow` 和 `flex-shrink` 都重置为 `0` ，告诉浏览器，该 Flex 项目不能扩展和收缩：
+
+~~~css
+
+.flex-item{
+  flex: 0 0 33.3%;
+  min-width: 0;
+}
+~~~
+
+
+
+- `50%` 、`33.33%` 和`25%` 标记的列，表示`flex-basis` 的值为  ，同时 `flex-grow` 和 `flex-shrink` 都重置为 `0`
+
+![image-20231102141229643](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231102141229643.png)
+
+
+
+### 九宫格
+
+九宫格简单地说就是一个 `3 × 3` 的网格（三行三列），它也常用于 Web 布局中，而且你可以基于它演变出很多种不同的布局风格：
+
+![image-20231102151221823](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231102151221823.png)
+
+虽然使用 Flexbox 可以构建一个网格布局，但 Flexbox 布局毕竟是一种**一维布局** ，用它来构建这样的九宫格布局效果，还是有一定的局限性，需要通过 HTML 结构强力配合才能实现。比如下面这个示例：
+
+![image-20231102151313445](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231102151313445.png)
+
+类似的html代码
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="./index.css" rel="stylesheet" />
+  <title>flex格子</title>
+</head>
+<body>
+<div class="container">
+  <div class="left">left</div>
+  <div class="right">
+    <div class="right-item">1</div>
+    <div class="right-item">2</div>
+    <div class="right-item">3</div>
+    <div class="right-item">4</div>
+    <div class="right-item">5</div>
+    <div class="right-item">6</div>
+    <div class="right-item">7</div>
+    <div class="right-item">8</div>
+    <div class="right-item">9</div>
+  </div>
+</div>
+</body>
+</html>
+~~~
+
+对应的css
+
+~~~css
+*, ::before, ::after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  width: 600px;
+  height: 400px;
+  background-color: #90ffa8;
+  display: flex;
+  padding: 12px;
+  gap: 12px;
+}
+.left{
+  flex: 6 1 0%;
+  min-width: 0;
+  background-color: azure;
+}
+.right{
+  flex: 4 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background-color: darkgrey;
+}
+/* 九宫格这部分的宽度需要计算 */
+.right-item{
+  flex: 0 0 calc((100% - 24px)/3);
+  min-width: 0;
+  background-color: bisque;
+}
+~~~
+
+![image-20231102171740982](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231102171740982.png)
+
+> 列宽（flex-basis） = （100%容器宽度（Flex 容器）- （列数 - 1）× (列间距)）÷ 列数
