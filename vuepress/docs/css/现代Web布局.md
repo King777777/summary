@@ -695,7 +695,7 @@ css也很简单
 }
 /* 九宫格这部分的宽度需要计算 */
 .right-item{
-  flex: 0 0 calc((100% - 24px)/3);
+  flex: 0 0 calc((100% - 24px)/3); 
   min-width: 0;
   background-color: bisque;
 }
@@ -703,4 +703,128 @@ css也很简单
 
 ![image-20231102171740982](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231102171740982.png)
 
-> 列宽（flex-basis） = （100%容器宽度（Flex 容器）- （列数 - 1）× (列间距)）÷ 列数
+> 这里的九宫格在一个flex容器中所以要求每一行项目宽的和+间距能够占满一行，才能导致换行，列宽（flex-basis） = calc(（100%容器宽度（Flex 容器）- （列数 - 1）× (列间距)）÷ 列数 )
+
+**上面的九宫格用一个flex容器就完成了，其实也可以把每一行看出一个整体，然后外围一个flex容器，内部3个竖向排列的flex容器**
+
+html结构
+
+~~~html
+<div class="nine">
+  <div class="row">
+    <div class="row-item">1</div>
+    <div class="row-item">2</div>
+    <div class="row-item">3</div>
+  </div>
+  <div class="row">
+    <div class="row-item">1</div>
+    <div class="row-item">2</div>
+    <div class="row-item">3</div>
+  </div>
+  <div class="row">
+    <div class="row-item">1</div>
+    <div class="row-item">2</div>
+    <div class="row-item">3</div>
+  </div>
+</div>
+~~~
+
+对应的css
+
+~~~css
+.nine{
+  margin-top: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 400px;
+  gap:10px;
+  background-color: aqua;
+}
+.row{
+  display: flex;
+  flex:1;
+  min-height: 0;
+  gap: 10px;
+}
+.row-item{
+  flex:1;
+  min-width: 0;
+}
+.row-item:nth-child(odd){
+  background-color: rosybrown;
+}
+.row-item:nth-child(even){
+  background-color: lavenderblush;
+}
+~~~
+
+结果
+
+![image-20231103134500977](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231103134500977.png)
+
+
+
+考虑下面这种布局
+
+![image-20231103104347939](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231103104347939.png)
+
+三个项目的宽高比是3/2，16/9，1/1，把Flex 项目的 `flex-grow` 值设为宽高比的计算值，比如 Flex 项目的宽高比（aspect-ratio）是 `4 : 3` ，那么对应的 `flex-grow` 值就是 `1.333333` （即 `4 ÷ 3 = 1.3333`）。**这种方案，还有一个优势，那就是 Flex 容器的 `gap` 值不会影响 Flex 项目的宽高比的计算。**
+
+html结构
+
+~~~html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="./index.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>picture wall</title>
+</head>
+<body>
+<div class="container">
+  <div class="flex-item" style="--ratio: 3/2">3:2</div>
+  <div class="flex-item" style="--ratio: 16/9">16:9</div>
+  <div class="flex-item" style="--ratio: 1/1">1:1</div>
+</div>
+</body>
+</html>
+~~~
+
+对应的css
+
+~~~css
+.container{
+  display: flex;
+  gap: 10px;
+  width: 50%;
+  background-color: rosybrown;
+}
+.flex-item{
+  flex-basis: 0%;
+  aspect-ratio: var(--ratio);
+  flex-grow: calc(var(--ratio));
+}
+.flex-item:nth-child(1){
+  background-color: #90ffa8;
+}
+.flex-item:nth-child(2){
+  background-color: bisque;
+}
+.flex-item:nth-child(3){
+  background-color: blue;
+}
+~~~
+
+### 导航栏的对齐方式
+
+以下图中的导航栏为例：
+
+其中容器的align-items均为center
+
+![image-20231103150118913](https://lwq-img-1312073911.cos.ap-nanjing.myqcloud.com/img/image-20231103150118913.png)
+
+**最后一个需要cart元素右对齐，把cart元素的margin-left设为auto，即可把剩余空间全部放到其左侧，完成右对齐**
+
+> 在flex布局中，实现元素左右上下对齐就使用margin-**： auto即可
